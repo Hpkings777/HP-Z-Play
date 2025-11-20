@@ -1,0 +1,114 @@
+{
+  "games": [
+    {
+      "id": "delta-base",
+      "name": "Delta Base",
+      "category": "Sci-Fi Shooter",
+      "description": "Defend the lunar outpost from wave after wave of alien drone attacks in this high-octane FPS.",
+      "color": "from-blue-600 to-indigo-700",
+      "icon": "crosshair",
+      "rating": 4.8,
+      "players": "12k",
+      "path": "/games/delta-base/index.html"
+    },
+    {
+      "id": "neon-racer",
+      "name": "Neon Racer",
+      "category": "Racing",
+      "description": "High-speed synthwave racing through a procedurally generated cyberpunk metropolis.",
+      "color": "from-fuchsia-500 to-purple-600",
+      "icon": "car",
+      "rating": 4.9,
+      "players": "8.5k",
+      "path": "/games/neon-racer/index.html"
+    },
+    {
+      "id": "cyber-logic",
+      "name": "Cyber Logic",
+      "category": "Puzzle",
+      "description": "Hack into the mainframe by solving complex 3D logic puzzles before the security system traces you.",
+      "color": "from-emerald-400 to-teal-600",
+      "icon": "cpu",
+      "rating": 4.7,
+      "players": "5k",
+      "path": "/games/cyber-logic/index.html"
+    },
+    {
+      "id": "void-walker",
+      "name": "Void Walker",
+      "category": "Adventure",
+      "description": "Explore the empty expanse of the deep void. Gather resources, build your ship, and survive.",
+      "color": "from-violet-600 to-indigo-900",
+      "icon": "rocket",
+      "rating": 4.5,
+      "players": "15k",
+      "path": "/games/void-walker/index.html"
+    },
+    {
+      "id": "solar-drift",
+      "name": "Solar Drift",
+      "category": "Arcade",
+      "description": "Drift around dangerous solar flares. The closer you get, the higher your score.",
+      "color": "from-orange-400 to-rose-500",
+      "icon": "flame",
+      "rating": 4.2,
+      "players": "3k",
+      "path": "/games/solar-drift/index.html"
+    },
+    {
+      "id": "aether-chronicles",
+      "name": "Aether",
+      "category": "RPG",
+      "description": "A text-based RPG set in a world where magic runs on steam technology.",
+      "color": "from-cyan-500 to-blue-500",
+      "icon": "sword",
+      "rating": 4.6,
+      "players": "9k",
+      "path": "/games/aether-chronicles/index.html"
+    },
+    {
+      "id": "frost-bite",
+      "name": "Frost Bite",
+      "category": "Survival",
+      "description": "Survive the eternal winter. Manage body heat, hunger, and sanity.",
+      "color": "from-cyan-300 to-blue-400",
+      "icon": "snowflake",
+      "rating": 4.4,
+      "players": "6k",
+      "path": "/games/frost-bite/index.html"
+    },
+    {
+      "id": "phantom-protocol",
+      "name": "Phantom",
+      "category": "Stealth",
+      "description": "Infiltrate high-security facilities without being seen. Silence is your only weapon.",
+      "color": "from-gray-600 to-gray-800",
+      "icon": "ghost",
+      "rating": 4.8,
+      "players": "4k",
+      "path": "/games/phantom-protocol/index.html"
+    },
+    {
+      "id": "dino",
+      "name": "Dino Run",
+      "category": "Runner",
+      "description": "Classic Dino run game.",
+      "color": "from-green-500 to-green-700",
+      "icon": "dino",
+      "rating": 5.0,
+      "players": "1M",
+      "path": "/games/dino/index.html"
+    },
+    {
+      "id": "shooter",
+      "name": "Space Shooter",
+      "category": "FPS",
+      "description": "Shoot aliens in space.",
+      "color": "from-red-500 to-red-700",
+      "icon": "crosshair",
+      "rating": 4.5,
+      "players": "10k",
+      "path": "/games/shooter/index.html"
+    }
+  ]
+}
