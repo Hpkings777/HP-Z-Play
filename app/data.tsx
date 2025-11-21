@@ -22,7 +22,7 @@ const iconMap: Record<string, React.ReactNode> = {
   'sword': <Sword size={20} />,
   'snowflake': <Snowflake size={20} />,
   'ghost': <Ghost size={20} />,
-  'dino': <Gamepad2 size={20} /> // Fallback or specific icon
+  'dino': <Gamepad2 size={20} />
 };
 
 export const GAMES: Game[] = getAllGames().map(g => ({

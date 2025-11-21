@@ -89,26 +89,48 @@
       "path": "/games/phantom-protocol/index.html"
     },
     {
-      "id": "dino",
-      "name": "Dino Run",
-      "category": "Runner",
-      "description": "Classic Dino run game.",
-      "color": "from-green-500 to-green-700",
-      "icon": "dino",
-      "rating": 5.0,
-      "players": "1M",
-      "path": "/games/dino/index.html"
+      "id": "2048",
+      "name": "2048",
+      "category": "Puzzle",
+      "description": "Join the numbers and get to the 2048 tile!",
+      "color": "from-yellow-400 to-orange-500",
+      "icon": "cpu",
+      "rating": 4.9,
+      "players": "1M+",
+      "path": "/games/2048/index.html"
     },
     {
-      "id": "shooter",
-      "name": "Space Shooter",
-      "category": "FPS",
-      "description": "Shoot aliens in space.",
-      "color": "from-red-500 to-red-700",
-      "icon": "crosshair",
+      "id": "asteroids",
+      "name": "Asteroids",
+      "category": "Arcade",
+      "description": "Classic arcade space shooter.",
+      "color": "from-gray-700 to-gray-900",
+      "icon": "rocket",
       "rating": 4.5,
-      "players": "10k",
-      "path": "/games/shooter/index.html"
+      "players": "500k",
+      "path": "/games/asteroids/index.html"
+    },
+    {
+      "id": "breakout",
+      "name": "Breakout",
+      "category": "Arcade",
+      "description": "Destroy all the bricks by bouncing the ball.",
+      "color": "from-red-500 to-orange-500",
+      "icon": "flame",
+      "rating": 4.6,
+      "players": "300k",
+      "path": "/games/breakout/index.html"
+    },
+    {
+      "id": "chrome-dino",
+      "name": "Dino Run",
+      "category": "Runner",
+      "description": "Run, Dino, Run!",
+      "color": "from-gray-500 to-gray-700",
+      "icon": "dino",
+      "rating": 4.8,
+      "players": "10M+",
+      "path": "/games/chrome-dino/index.html"
     }
   ]
 }
