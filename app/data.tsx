@@ -1,6 +1,6 @@
 import React from 'react';
-import { Crosshair, Car, Cpu, Rocket, Flame, Sword, Snowflake, Ghost, Gamepad2 } from 'lucide-react';
-import { getAllGames } from '../core/loader';
+import { Crosshair, Car, Cpu, Rocket, Flame, Sword, Snowflake, Ghost, Gamepad2, Hexagon, Zap } from 'lucide-react';
+import { getAllGames } from '@core/loader';
 
 export interface Game {
   id: string;
@@ -22,16 +22,9 @@ const iconMap: Record<string, React.ReactNode> = {
   'sword': <Sword size={20} />,
   'snowflake': <Snowflake size={20} />,
   'ghost': <Ghost size={20} />,
-  'dino': <Gamepad2 size={20} />
+  'dino': <Gamepad2 size={20} />,
+  'Hexagon': <Hexagon size={20} />,
+  'Zap': <Zap size={20} />
 };
 
-export const GAMES: Game[] = getAllGames().map(g => ({
-  id: g.id,
-  title: g.name,
-  category: g.category,
-  description: g.description,
-  color: g.color,
-  icon: iconMap[g.icon] || <Gamepad2 size={20} />,
-  rating: g.rating,
-  players: g.players
-}));
+

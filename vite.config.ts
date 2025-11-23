@@ -8,6 +8,12 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        hmr: {
+          host: '3000-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer',
+          protocol: 'wss',
+          clientPort: 443,
+        },
+        allowedHosts: ['3001-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer', '3000-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer'],
       },
       plugins: [react()],
       define: {

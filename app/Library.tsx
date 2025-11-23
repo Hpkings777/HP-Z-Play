@@ -1,5 +1,5 @@
 import React from 'react';
-import { GAMES } from './data';
+import { getAllGames } from '@core/loader';
 import { useThemeStore } from './store';
 import GameCard from './GameCard';
 import { Heart, History, Ghost } from 'lucide-react';
@@ -7,8 +7,9 @@ import { Heart, History, Ghost } from 'lucide-react';
 const Library = () => {
   const { favorites, recent } = useThemeStore();
 
-  const favoriteGames = GAMES.filter(g => favorites.includes(g.id));
-  const recentGames = recent.map(id => GAMES.find(g => g.id === id)).filter(Boolean);
+  const allGames = getAllGames();
+  const favoriteGames = allGames.filter(g => favorites.includes(g.id));
+  const recentGames = recent.map(id => allGames.find(g => g.id === id)).filter(Boolean);
 
   return (
     <div className="p-4 md:p-8 lg:p-12 max-w-7xl mx-auto pb-24">
