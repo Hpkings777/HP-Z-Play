@@ -34,12 +34,12 @@ const GamePlayer = () => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setLoading(false), 500);
+          setTimeout(() => setLoading(false), 100);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 15);
+        return prev + Math.floor(Math.random() * 50);
       });
-    }, 200);
+    }, 50);
     return () => clearInterval(interval);
   }, []);
 

@@ -8,12 +8,10 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
-        hmr: {
-          host: '3000-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer',
-          protocol: 'wss',
-          clientPort: 443,
-        },
-        allowedHosts: ['3001-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer', '3000-iy0qd9v2w5yjiz3v5r1r1-91219ab7.manus-asia.computer'],
+        fs: {
+            // Allow serving files from one level up to the project root
+            allow: ['..']
+        }
       },
       plugins: [react()],
       define: {
@@ -25,6 +23,11 @@ export default defineConfig(({ mode }) => {
           '@': path.resolve(__dirname, './app'),
           '@core': path.resolve(__dirname, './core'),
           '@games': path.resolve(__dirname, './games')
+        }
+      },
+      publicDir: 'public',
+      build: {
+        rollupOptions: {
         }
       }
     };

@@ -28,13 +28,25 @@ const iconMap: Record<string, React.ReactNode> = {
   'gamepad2': <Gamepad2 size={20} />
 };
 
-export const GAMES: Game[] = getAllGames().map(game => ({
-  id: game.id,
-  title: game.name,
-  category: game.category,
-  description: game.description,
-  color: game.color,
-  icon: iconMap[game.icon.toLowerCase()] || <Gamepad2 size={20} />,
-  rating: game.rating,
-  players: game.players
-}));
+export const GAMES: Game[] = getAllGames().map(game => {
+  let icon: React.ReactNode;
+
+  // Check if the icon looks like a file path (starts with / or ./ or has extension)
+  // The sync script produces /games/... paths.
+  if (game.icon.startsWith('/') || game.icon.includes('.')) {
+     icon = <img src={game.icon} alt={game.name} className="w-full h-full object-cover rounded-md" />;
+  } else {
+     icon = iconMap[game.icon.toLowerCase()] || <Gamepad2 size={20} />;
+  }
+
+  return {
+    id: game.id,
+    title: game.name,
+    category: game.category,
+    description: game.description,
+    color: game.color,
+    icon: icon,
+    rating: game.rating,
+    players: game.players
+  };
+});

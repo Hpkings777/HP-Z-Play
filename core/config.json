@@ -1,138 +1,6 @@
 {
   "games": [
     {
-      "id": "delta-base",
-      "name": "Delta Base",
-      "category": "Sci-Fi Shooter",
-      "description": "Defend the lunar outpost from wave after wave of alien drone attacks in this high-octane FPS.",
-      "color": "from-blue-600 to-indigo-700",
-      "icon": "crosshair",
-      "rating": 4.8,
-      "players": "12k",
-      "path": "/games/delta-base/index.html"
-    },
-    {
-      "id": "neon-racer",
-      "name": "Neon Racer",
-      "category": "Racing",
-      "description": "High-speed synthwave racing through a procedurally generated cyberpunk metropolis.",
-      "color": "from-fuchsia-500 to-purple-600",
-      "icon": "car",
-      "rating": 4.9,
-      "players": "8.5k",
-      "path": "/games/neon-racer/index.html"
-    },
-    {
-      "id": "cyber-logic",
-      "name": "Cyber Logic",
-      "category": "Puzzle",
-      "description": "Hack into the mainframe by solving complex 3D logic puzzles before the security system traces you.",
-      "color": "from-emerald-400 to-teal-600",
-      "icon": "cpu",
-      "rating": 4.7,
-      "players": "5k",
-      "path": "/games/cyber-logic/index.html"
-    },
-    {
-      "id": "void-walker",
-      "name": "Void Walker",
-      "category": "Adventure",
-      "description": "Explore the empty expanse of the deep void. Gather resources, build your ship, and survive.",
-      "color": "from-violet-600 to-indigo-900",
-      "icon": "rocket",
-      "rating": 4.5,
-      "players": "15k",
-      "path": "/games/void-walker/index.html"
-    },
-    {
-      "id": "solar-drift",
-      "name": "Solar Drift",
-      "category": "Arcade",
-      "description": "Drift around dangerous solar flares. The closer you get, the higher your score.",
-      "color": "from-orange-400 to-rose-500",
-      "icon": "flame",
-      "rating": 4.2,
-      "players": "3k",
-      "path": "/games/solar-drift/index.html"
-    },
-    {
-      "id": "aether-chronicles",
-      "name": "Aether",
-      "category": "RPG",
-      "description": "A text-based RPG set in a world where magic runs on steam technology.",
-      "color": "from-cyan-500 to-blue-500",
-      "icon": "sword",
-      "rating": 4.6,
-      "players": "9k",
-      "path": "/games/aether-chronicles/index.html"
-    },
-    {
-      "id": "frost-bite",
-      "name": "Frost Bite",
-      "category": "Survival",
-      "description": "Survive the eternal winter. Manage body heat, hunger, and sanity.",
-      "color": "from-cyan-300 to-blue-400",
-      "icon": "snowflake",
-      "rating": 4.4,
-      "players": "6k",
-      "path": "/games/frost-bite/index.html"
-    },
-    {
-      "id": "phantom-protocol",
-      "name": "Phantom",
-      "category": "Stealth",
-      "description": "Infiltrate high-security facilities without being seen. Silence is your only weapon.",
-      "color": "from-gray-600 to-gray-800",
-      "icon": "ghost",
-      "rating": 4.8,
-      "players": "4k",
-      "path": "/games/phantom-protocol/index.html"
-    },
-    {
-      "id": "2048",
-      "name": "2048",
-      "category": "Puzzle",
-      "description": "Join the numbers and get to the 2048 tile!",
-      "color": "from-yellow-400 to-orange-500",
-      "icon": "cpu",
-      "rating": 4.9,
-      "players": "1M+",
-      "path": "/games/2048/index.html"
-    },
-    {
-      "id": "asteroids",
-      "name": "Asteroids",
-      "category": "Arcade",
-      "description": "Classic arcade space shooter.",
-      "color": "from-gray-700 to-gray-900",
-      "icon": "rocket",
-      "rating": 4.5,
-      "players": "500k",
-      "path": "/games/asteroids/index.html"
-    },
-    {
-      "id": "breakout",
-      "name": "Breakout",
-      "category": "Arcade",
-      "description": "Destroy all the bricks by bouncing the ball.",
-      "color": "from-red-500 to-orange-500",
-      "icon": "flame",
-      "rating": 4.6,
-      "players": "300k",
-      "path": "/games/breakout/index.html"
-    },
-    {
-      "id": "chrome-dino",
-      "name": "Dino Run",
-      "category": "Runner",
-      "description": "Run, Dino, Run!",
-      "color": "from-gray-500 to-gray-700",
-      "icon": "dino",
-      "rating": 4.8,
-      "players": "10M+",
-      "path": "/games/chrome-dino/index.html"
-    },
-    {
       "id": "1v1lol",
       "name": "1V1Lol",
       "category": "Runner",
@@ -144,13 +12,24 @@
       "path": "/games/1v1lol/index.html"
     },
     {
+      "id": "2048",
+      "name": "2048",
+      "category": "Puzzle",
+      "description": "Join the numbers and get to the 2048 tile!",
+      "color": "from-yellow-400 to-orange-500",
+      "icon": "/games/2048/favicon.ico",
+      "rating": 4.9,
+      "players": "1M+",
+      "path": "/games/2048/index.html"
+    },
+    {
       "id": "8ball",
       "name": "8Ball",
       "category": "Runner",
       "description": "A classic open-source HTML5 game: 8Ball.",
       "color": "from-red-500 to-pink-500",
       "icon": "Gamepad2",
-      "rating": 4.0,
+      "rating": 4,
       "players": "496k",
       "path": "/games/8ball/index.html"
     },
@@ -160,7 +39,7 @@
       "category": "Adventure",
       "description": "A classic open-source HTML5 game: Adarkroom.",
       "color": "from-green-500 to-lime-500",
-      "icon": "Crosshair",
+      "icon": "/games/adarkroom/favicon.ico",
       "rating": 4.6,
       "players": "256k",
       "path": "/games/adarkroom/index.html"
@@ -186,6 +65,17 @@
       "rating": 4.5,
       "players": "424k",
       "path": "/games/asciispace/index.html"
+    },
+    {
+      "id": "asteroids",
+      "name": "Asteroids",
+      "category": "Arcade",
+      "description": "Classic arcade space shooter.",
+      "color": "from-gray-700 to-gray-900",
+      "icon": "rocket",
+      "rating": 4.5,
+      "players": "500k",
+      "path": "/games/asteroids/index.html"
     },
     {
       "id": "astray",
@@ -226,7 +116,7 @@
       "category": "Action",
       "description": "A classic open-source HTML5 game: Blackholesquare.",
       "color": "from-teal-500 to-emerald-500",
-      "icon": "Gamepad2",
+      "icon": "/games/blackholesquare/icon.png",
       "rating": 4.2,
       "players": "316k",
       "path": "/games/blackholesquare/index.html"
@@ -238,7 +128,7 @@
       "description": "A classic open-source HTML5 game: Bloonstd4.",
       "color": "from-blue-500 to-cyan-500",
       "icon": "Hexagon",
-      "rating": 4.0,
+      "rating": 4,
       "players": "2k",
       "path": "/games/bloonstd4/index.html"
     },
@@ -263,6 +153,17 @@
       "rating": 4.6,
       "players": "63k",
       "path": "/games/breaklock/index.html"
+    },
+    {
+      "id": "breakout",
+      "name": "Breakout",
+      "category": "Arcade",
+      "description": "Destroy all the bricks by bouncing the ball.",
+      "color": "from-red-500 to-orange-500",
+      "icon": "flame",
+      "rating": 4.6,
+      "players": "300k",
+      "path": "/games/breakout/index.html"
     },
     {
       "id": "captaincallisto",
@@ -293,9 +194,20 @@
       "description": "A classic open-source HTML5 game: Chromaincident.",
       "color": "from-green-500 to-lime-500",
       "icon": "Zap",
-      "rating": 4.0,
+      "rating": 4,
       "players": "245k",
       "path": "/games/chromaincident/index.html"
+    },
+    {
+      "id": "chrome-dino",
+      "name": "Dino Run",
+      "category": "Runner",
+      "description": "Run, Dino, Run!",
+      "color": "from-gray-500 to-gray-700",
+      "icon": "dino",
+      "rating": 4.8,
+      "players": "10M+",
+      "path": "/games/chrome-dino/index.html"
     },
     {
       "id": "chromedino",
@@ -436,7 +348,7 @@
       "description": "A classic open-source HTML5 game: Doge2048.",
       "color": "from-fuchsia-500 to-rose-500",
       "icon": "Gamepad2",
-      "rating": 4.0,
+      "rating": 4,
       "players": "233k",
       "path": "/games/doge2048/index.html"
     },
@@ -446,7 +358,7 @@
       "category": "Simulation",
       "description": "A classic open-source HTML5 game: Dogeminer.",
       "color": "from-fuchsia-500 to-rose-500",
-      "icon": "Car",
+      "icon": "/games/dogeminer/favicon.ico",
       "rating": 4.1,
       "players": "11k",
       "path": "/games/dogeminer/index.html"
@@ -480,7 +392,7 @@
       "description": "A classic open-source HTML5 game: Ducklife.",
       "color": "from-green-500 to-lime-500",
       "icon": "Gamepad2",
-      "rating": 5.0,
+      "rating": 5,
       "players": "276k",
       "path": "/games/ducklife/index.html"
     },
@@ -513,7 +425,7 @@
       "description": "A classic open-source HTML5 game: Ducklife4.",
       "color": "from-yellow-500 to-orange-500",
       "icon": "Cpu",
-      "rating": 5.0,
+      "rating": 5,
       "players": "8k",
       "path": "/games/ducklife4/index.html"
     },
@@ -535,7 +447,7 @@
       "description": "A classic open-source HTML5 game: Edge Surf.",
       "color": "from-teal-500 to-emerald-500",
       "icon": "Crosshair",
-      "rating": 4.0,
+      "rating": 4,
       "players": "461k",
       "path": "/games/edge-surf/index.html"
     },
@@ -546,7 +458,7 @@
       "description": "A classic open-source HTML5 game: Edgenotfound.",
       "color": "from-gray-500 to-slate-500",
       "icon": "Ghost",
-      "rating": 5.0,
+      "rating": 5,
       "players": "238k",
       "path": "/games/edgenotfound/index.html"
     },
@@ -568,7 +480,7 @@
       "description": "A classic open-source HTML5 game: Evilglitch.",
       "color": "from-blue-500 to-cyan-500",
       "icon": "Crosshair",
-      "rating": 5.0,
+      "rating": 5,
       "players": "420k",
       "path": "/games/evilglitch/index.html"
     },
@@ -667,7 +579,7 @@
       "description": "A classic open-source HTML5 game: Fnaf.",
       "color": "from-green-500 to-lime-500",
       "icon": "Snowflake",
-      "rating": 4.0,
+      "rating": 4,
       "players": "365k",
       "path": "/games/fnaf/index.html"
     },
@@ -689,7 +601,7 @@
       "description": "A classic open-source HTML5 game: Fnaf3.",
       "color": "from-red-500 to-pink-500",
       "icon": "Zap",
-      "rating": 4.0,
+      "rating": 4,
       "players": "35k",
       "path": "/games/fnaf3/index.html"
     },
@@ -711,7 +623,7 @@
       "description": "A classic open-source HTML5 game: Friendlyfire.",
       "color": "from-blue-500 to-cyan-500",
       "icon": "Zap",
-      "rating": 5.0,
+      "rating": 5,
       "players": "126k",
       "path": "/games/friendlyfire/index.html"
     },
@@ -754,7 +666,7 @@
       "category": "Sports",
       "description": "A classic open-source HTML5 game: Hextris.",
       "color": "from-green-500 to-lime-500",
-      "icon": "Flame",
+      "icon": "/games/hextris/favicon.ico",
       "rating": 4.1,
       "players": "449k",
       "path": "/games/hextris/index.html"
@@ -766,7 +678,7 @@
       "description": "A classic open-source HTML5 game: Icypurplehead2.",
       "color": "from-purple-500 to-indigo-500",
       "icon": "Car",
-      "rating": 5.0,
+      "rating": 5,
       "players": "199k",
       "path": "/games/icypurplehead2/index.html"
     },
@@ -865,7 +777,7 @@
       "description": "A classic open-source HTML5 game: Packabunchas.",
       "color": "from-green-500 to-lime-500",
       "icon": "Crosshair",
-      "rating": 4.0,
+      "rating": 4,
       "players": "228k",
       "path": "/games/packabunchas/index.html"
     },
@@ -875,8 +787,8 @@
       "category": "Runner",
       "description": "A classic open-source HTML5 game: Pacman.",
       "color": "from-purple-500 to-indigo-500",
-      "icon": "Cpu",
-      "rating": 4.0,
+      "icon": "/games/pacman/favicon.png",
+      "rating": 4,
       "players": "448k",
       "path": "/games/pacman/index.html"
     },
@@ -897,7 +809,7 @@
       "category": "Arcade",
       "description": "A classic open-source HTML5 game: Particleclicker.",
       "color": "from-green-500 to-lime-500",
-      "icon": "Snowflake",
+      "icon": "/games/particleclicker/favicon.ico",
       "rating": 4.2,
       "players": "173k",
       "path": "/games/particleclicker/index.html"
@@ -908,7 +820,7 @@
       "category": "Sports",
       "description": "A classic open-source HTML5 game: Physicsplayground.",
       "color": "from-green-500 to-lime-500",
-      "icon": "Car",
+      "icon": "/games/physicsplayground/favicon.ico",
       "rating": 4.2,
       "players": "323k",
       "path": "/games/physicsplayground/index.html"
@@ -964,7 +876,7 @@
       "description": "A classic open-source HTML5 game: Racer.",
       "color": "from-gray-500 to-slate-500",
       "icon": "Hexagon",
-      "rating": 4.0,
+      "rating": 4,
       "players": "259k",
       "path": "/games/racer/index.html"
     },
@@ -985,8 +897,8 @@
       "category": "Action",
       "description": "A classic open-source HTML5 game: Retrobowl.",
       "color": "from-red-500 to-pink-500",
-      "icon": "Flame",
-      "rating": 4.0,
+      "icon": "/games/retrobowl/favicon.ico",
+      "rating": 4,
       "players": "435k",
       "path": "/games/retrobowl/index.html"
     },
@@ -1029,7 +941,7 @@
       "category": "Puzzle",
       "description": "A classic open-source HTML5 game: Run3.",
       "color": "from-red-500 to-pink-500",
-      "icon": "Hexagon",
+      "icon": "/games/run3/favicon.png",
       "rating": 4.3,
       "players": "456k",
       "path": "/games/run3/index.html"
@@ -1041,7 +953,7 @@
       "description": "A classic open-source HTML5 game: Shuttledeck.",
       "color": "from-blue-500 to-cyan-500",
       "icon": "Ghost",
-      "rating": 4.0,
+      "rating": 4,
       "players": "24k",
       "path": "/games/shuttledeck/index.html"
     },
@@ -1063,7 +975,7 @@
       "description": "A classic open-source HTML5 game: Slitherio.",
       "color": "from-teal-500 to-emerald-500",
       "icon": "Zap",
-      "rating": 5.0,
+      "rating": 5,
       "players": "5k",
       "path": "/games/slitherio/index.html"
     },
@@ -1129,7 +1041,7 @@
       "description": "A classic open-source HTML5 game: Spacegarden.",
       "color": "from-yellow-500 to-orange-500",
       "icon": "Snowflake",
-      "rating": 4.0,
+      "rating": 4,
       "players": "371k",
       "path": "/games/spacegarden/index.html"
     },
@@ -1173,7 +1085,7 @@
       "description": "A classic open-source HTML5 game: Stacktower.",
       "color": "from-red-500 to-pink-500",
       "icon": "Car",
-      "rating": 5.0,
+      "rating": 5,
       "players": "326k",
       "path": "/games/stacktower/index.html"
     },
@@ -1206,7 +1118,7 @@
       "description": "A classic open-source HTML5 game: Tetris.",
       "color": "from-green-500 to-lime-500",
       "icon": "Zap",
-      "rating": 5.0,
+      "rating": 5,
       "players": "123k",
       "path": "/games/tetris/index.html"
     },
