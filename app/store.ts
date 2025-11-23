@@ -41,13 +41,17 @@ export const useThemeStore = create<ThemeState>()(
       xp: 0,
       level: 1,
       addXp: (amount) => set((state) => {
-        const newXp = state.xp + amount;
-        // Simple level up logic: Level * 1000 XP required
-        const nextLevelXp = state.level * 1000;
-        if (newXp >= nextLevelXp) {
-          return { xp: newXp - nextLevelXp, level: state.level + 1 };
+        let currentXp = state.xp + amount;
+        let currentLevel = state.level;
+        let nextLevelXp = currentLevel * 1000;
+
+        while (currentXp >= nextLevelXp) {
+          currentXp -= nextLevelXp;
+          currentLevel++;
+          nextLevelXp = currentLevel * 1000;
         }
-        return { xp: newXp };
+
+        return { xp: currentXp, level: currentLevel };
       })
     }),
     {
