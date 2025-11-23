@@ -47,7 +47,7 @@ const Layout = () => {
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-2">
-          <NavItem to="/" icon={Home} label="Home" />
+          <NavItem to="/home" icon={Home} label="Home" />
           <NavItem to="/library" icon={Gamepad2} label="My Library" />
           <NavItem to="/profile" icon={User} label="Profile" />
           <div className="pt-4 pb-2">
@@ -93,7 +93,7 @@ const Layout = () => {
 
       {/* Mobile Bottom Nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-lg border-t border-gray-200 dark:border-white/5 flex justify-around items-center px-2 z-50 pb-[env(safe-area-inset-bottom)] pt-2 h-[calc(60px+env(safe-area-inset-bottom))] transition-colors duration-300">
-         <NavItem to="/" icon={Home} label="Home" />
+         <NavItem to="/home" icon={Home} label="Home" />
          <NavItem to="/library" icon={Gamepad2} label="Library" />
          <NavItem to="/profile" icon={User} label="Profile" />
       </nav>

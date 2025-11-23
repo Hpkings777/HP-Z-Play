@@ -15,6 +15,14 @@ export default {
         light: {
           bg: '#f8f9fa',
           surface: '#ffffff',
+        },
+        z: {
+            black: '#050505',
+            dark: '#0a0a0a',
+            panel: '#121212',
+            primary: '#6366f1',
+            accent: '#8b5cf6',
+            neon: '#00f0ff',
         }
       },
       fontFamily: {
