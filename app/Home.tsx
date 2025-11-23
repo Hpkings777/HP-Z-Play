@@ -9,14 +9,25 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.08,
+      delayChildren: 0.2
     }
   }
 };
 
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+      mass: 0.8
+    }
+  }
 };
 
 const Home = () => {
@@ -26,17 +37,18 @@ const Home = () => {
     // Simulate loading delay to show the loader
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1200);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-[#09090b]">
+      <div className="flex items-center justify-center h-screen bg-light-bg dark:bg-dark-bg">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1, rotate: 360 }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-600 rounded-full shadow-lg shadow-blue-500/20"
         />
       </div>
     );

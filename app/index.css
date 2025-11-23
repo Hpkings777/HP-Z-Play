@@ -3,12 +3,17 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   /* Prevent text selection for app-like feel */
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   overscroll-behavior-y: none;
+  @apply bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors duration-300;
 }
 
 /* Custom Scrollbar */

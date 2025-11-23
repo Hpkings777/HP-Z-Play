@@ -13,6 +13,7 @@ const GamePlayer = () => {
   const game = GAMES.find(g => g.id === id);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [loadingStage, setLoadingStage] = useState('INITIALIZING');
   const [iframeSrc, setIframeSrc] = useState('');
 
   useEffect(() => {
@@ -29,17 +30,36 @@ const GamePlayer = () => {
   }, [id, addRecent, addXp]);
 
   useEffect(() => {
-    // Simulate Asset Loading
+    // Extended Loading Simulation (4-6 seconds)
+    // Total steps approx 100. To get ~5000ms, each step should be around 50ms avg, incrementing by ~1.
+    // We'll use a variable increment to make it look organic but ensuring it takes time.
+
+    let currentProgress = 0;
+    const duration = 4000 + Math.random() * 2000; // 4-6 seconds
+    const intervalTime = 50;
+    const totalSteps = duration / intervalTime;
+    const incrementPerStep = 100 / totalSteps;
+
     const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setLoading(false), 100);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 50);
-      });
-    }, 50);
+      currentProgress += incrementPerStep + (Math.random() * 0.5 - 0.25); // Add some jitter
+
+      if (currentProgress >= 100) {
+        currentProgress = 100;
+        clearInterval(interval);
+        setLoadingStage('READY');
+        setTimeout(() => setLoading(false), 800); // Fade out delay
+      }
+
+      setProgress(Math.min(currentProgress, 100));
+
+      // Update stage text based on progress
+      if (currentProgress < 30) setLoadingStage('INITIALIZING ENGINE');
+      else if (currentProgress < 60) setLoadingStage('LOADING ASSETS');
+      else if (currentProgress < 85) setLoadingStage('CONNECTING TO SERVER');
+      else if (currentProgress < 100) setLoadingStage('FINALIZING');
+
+    }, intervalTime);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -74,35 +94,72 @@ const GamePlayer = () => {
 
       {/* Game Container */}
       <div className="flex-1 relative overflow-hidden">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {loading ? (
             <motion.div
               key="loader"
               initial={{ opacity: 1 }}
-              exit={{ opacity: 0, scale: 1.1 }}
-              className="absolute inset-0 bg-[#09090b] flex flex-col items-center justify-center"
+              exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 bg-[#09090b] flex flex-col items-center justify-center z-50"
             >
-               <div className="relative w-24 h-24 mb-8">
+               <div className="relative w-32 h-32 mb-10">
+                 {/* Outer Ring */}
                  <motion.div
                    animate={{ rotate: 360 }}
-                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                   className="absolute inset-0 border-4 border-blue-500/30 border-t-blue-500 rounded-full"
+                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                   className="absolute inset-0 border-2 border-blue-500/20 border-t-blue-500 rounded-full"
                  />
-                 <div className="absolute inset-0 flex items-center justify-center text-blue-500">
-                    {game.icon}
+                 {/* Inner Ring */}
+                 <motion.div
+                   animate={{ rotate: -180 }}
+                   transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                   className="absolute inset-2 border-2 border-purple-500/20 border-b-purple-500 rounded-full"
+                 />
+                 {/* Pulse Effect */}
+                 <div className="absolute inset-0 bg-blue-500/5 rounded-full animate-pulse" />
+
+                 {/* Icon */}
+                 <div className="absolute inset-0 flex items-center justify-center text-white/90 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                    {React.isValidElement(game.icon) ? React.cloneElement(game.icon as React.ReactElement, { size: 40 }) : game.icon}
                  </div>
                </div>
-               <h2 className="text-2xl font-black text-white tracking-tight mb-2">{game.title}</h2>
-               <p className="text-gray-500 text-sm mb-6 font-mono">INITIALIZING ENGINE v2.5...</p>
 
-               <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden">
+               <motion.h2
+                  key={game.title}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-3xl font-black text-white tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white"
+                >
+                  {game.title}
+               </motion.h2>
+
+               <motion.p
+                 key={loadingStage}
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 className="text-blue-400/80 text-xs mb-8 font-mono tracking-[0.2em] uppercase"
+               >
+                 {loadingStage}...
+               </motion.p>
+
+               {/* Progress Bar Container */}
+               <div className="w-72 h-1.5 bg-white/5 rounded-full overflow-hidden relative backdrop-blur-sm ring-1 ring-white/10">
+                 {/* Glowing Progress Bar */}
                  <motion.div
                    initial={{ width: 0 }}
                    animate={{ width: `${progress}%` }}
-                   className="h-full bg-blue-500"
-                 />
+                   transition={{ type: "spring", stiffness: 20, damping: 10 }} // Smooth springy progress
+                   className="h-full bg-gradient-to-r from-blue-600 via-purple-500 to-blue-400 relative"
+                 >
+                    <div className="absolute inset-0 bg-white/30 animate-[shimmer_2s_infinite]" />
+                 </motion.div>
                </div>
-               <p className="mt-2 text-xs text-gray-600 font-mono">{progress}% loaded</p>
+
+               <div className="mt-3 flex justify-between w-72 text-[10px] font-mono text-gray-600">
+                  <span>SYSTEM_READY</span>
+                  <span>{Math.round(progress)}%</span>
+               </div>
             </motion.div>
           ) : (
             <motion.div
