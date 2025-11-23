@@ -2,7 +2,7 @@ import React from 'react';
 import { getAllGames } from '@core/loader';
 import { useThemeStore } from './store';
 import GameCard from './GameCard';
-import { Heart, History, Ghost } from 'lucide-react';
+import { Heart, History, Ghost, AlertTriangle } from 'lucide-react';
 
 const Library = () => {
   const { favorites, recent } = useThemeStore();
@@ -17,6 +17,15 @@ const Library = () => {
         <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-2">My Library</h1>
         <p className="text-gray-500 dark:text-gray-400">Manage your collections and jump back in.</p>
       </header>
+
+      {/* Local Data Warning */}
+      <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl flex items-start gap-3 text-yellow-700 dark:text-yellow-400">
+          <AlertTriangle className="shrink-0 mt-0.5" size={20} />
+          <div>
+              <h4 className="font-bold text-sm">Local Data Only</h4>
+              <p className="text-xs opacity-90 mt-1">Your library favorites and history are saved to this device only.</p>
+          </div>
+      </div>
 
       {/* Favorites Section */}
       <section className="mb-12">

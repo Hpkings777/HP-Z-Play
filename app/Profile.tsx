@@ -1,22 +1,42 @@
 import React from 'react';
 import { useThemeStore } from './store';
-import { Trophy, Shield, Zap, Clock, Target, Medal } from 'lucide-react';
+import { Trophy, Shield, Zap, Clock, Target, Medal, AlertTriangle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Achievement } from '../core/localdb';
 
 const Profile = () => {
-  const { level, xp } = useThemeStore();
+  const { level, xp, stats, achievements } = useThemeStore();
   const nextLevelXp = level * 1000;
   const progress = (xp / nextLevelXp) * 100;
 
-  const ACHIEVEMENTS = [
-    { id: 1, title: 'First Blood', desc: 'Play your first game', icon: <Target size={18} />, unlocked: true, color: 'text-red-500 bg-red-500/10' },
-    { id: 2, title: 'Night Owl', desc: 'Play between 12AM - 4AM', icon: <Clock size={18} />, unlocked: false, color: 'text-blue-500 bg-blue-500/10' },
-    { id: 3, title: 'Collector', desc: 'Favorite 10 games', icon: <Shield size={18} />, unlocked: false, color: 'text-purple-500 bg-purple-500/10' },
-    { id: 4, title: 'Champion', desc: 'Reach Level 10', icon: <Trophy size={18} />, unlocked: level >= 10, color: 'text-yellow-500 bg-yellow-500/10' },
+  const formatTime = (seconds: number) => {
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      if (h > 0) return `${h}h ${m}m`;
+      return `${m}m`;
+  };
+
+  const ACHIEVEMENT_DEFINITIONS = [
+    { id: 'first-blood', title: 'First Blood', desc: 'Play your first game', icon: <Target size={18} />, color: 'text-red-500 bg-red-500/10' },
+    { id: 'night-owl', title: 'Night Owl', desc: 'Play between 12AM - 4AM', icon: <Clock size={18} />, color: 'text-blue-500 bg-blue-500/10' },
+    { id: 'collector', title: 'Collector', desc: 'Favorite 10 games', icon: <Shield size={18} />, color: 'text-purple-500 bg-purple-500/10' },
+    { id: 'champion', title: 'Champion', desc: 'Reach Level 10', icon: <Trophy size={18} />, color: 'text-yellow-500 bg-yellow-500/10' },
+    { id: 'dedicated', title: 'Dedicated', desc: 'Play for 10 hours', icon: <Zap size={18} />, color: 'text-orange-500 bg-orange-500/10' },
   ];
+
+  const isUnlocked = (id: string) => achievements.some(a => a.id === id && a.unlocked);
 
   return (
     <div className="p-4 md:p-8 lg:p-12 max-w-5xl mx-auto pb-24">
+      {/* Local Data Warning */}
+      <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-2xl flex items-start gap-3 text-yellow-700 dark:text-yellow-400">
+          <AlertTriangle className="shrink-0 mt-0.5" size={20} />
+          <div>
+              <h4 className="font-bold text-sm">Local Data Only</h4>
+              <p className="text-xs opacity-90 mt-1">Your progress, stats, and favorites are currently saved to this device only. Sign in (Coming Soon) to sync your data across devices.</p>
+          </div>
+      </div>
+
       {/* Profile Header Card */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 to-gray-800 dark:from-blue-900 dark:to-gray-900 text-white p-8 md:p-12 mb-8 shadow-2xl">
          <div className="absolute top-0 right-0 p-12 opacity-10">
@@ -40,8 +60,8 @@ const Profile = () => {
             <div className="text-center md:text-left flex-1">
                <h1 className="text-3xl font-bold mb-2">Guest Player</h1>
                <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-gray-300 mb-6">
-                  <span className="flex items-center gap-1"><Trophy size={14} /> Rank: Novice</span>
-                  <span className="flex items-center gap-1"><Clock size={14} /> Joined: 2023</span>
+                  <span className="flex items-center gap-1"><Trophy size={14} /> Rank: {level > 10 ? 'Pro' : 'Novice'}</span>
+                  <span className="flex items-center gap-1"><Clock size={14} /> Joined: 2025</span>
                </div>
 
                {/* XP Bar */}
@@ -74,15 +94,15 @@ const Profile = () => {
                <div className="space-y-4">
                   <div className="flex justify-between items-center">
                      <span className="text-gray-500 text-sm">Games Played</span>
-                     <span className="font-bold text-gray-900 dark:text-white">12</span>
+                     <span className="font-bold text-gray-900 dark:text-white">{stats.gamesPlayed}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                     <span className="text-gray-500 text-sm">Win Rate</span>
-                     <span className="font-bold text-gray-900 dark:text-white">45%</span>
+                     <span className="text-gray-500 text-sm">Time Played</span>
+                     <span className="font-bold text-gray-900 dark:text-white">{formatTime(stats.timePlayedSeconds)}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                     <span className="text-gray-500 text-sm">Hours</span>
-                     <span className="font-bold text-gray-900 dark:text-white">8.5h</span>
+                     <span className="text-gray-500 text-sm">Achievements</span>
+                     <span className="font-bold text-gray-900 dark:text-white">{achievements.length} / {ACHIEVEMENT_DEFINITIONS.length}</span>
                   </div>
                </div>
             </div>
@@ -96,17 +116,20 @@ const Profile = () => {
                </h3>
 
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {ACHIEVEMENTS.map(ach => (
-                     <div key={ach.id} className={`flex items-center gap-4 p-4 rounded-2xl border ${ach.unlocked ? 'border-green-500/20 bg-green-500/5' : 'border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/5 opacity-60'}`}>
-                        <div className={`p-3 rounded-xl ${ach.unlocked ? ach.color : 'bg-gray-200 dark:bg-white/10 text-gray-400'}`}>
-                           {ach.icon}
+                  {ACHIEVEMENT_DEFINITIONS.map(ach => {
+                     const unlocked = isUnlocked(ach.id);
+                     return (
+                        <div key={ach.id} className={`flex items-center gap-4 p-4 rounded-2xl border transition-colors ${unlocked ? 'border-green-500/20 bg-green-500/5' : 'border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-white/5 opacity-60'}`}>
+                            <div className={`p-3 rounded-xl ${unlocked ? ach.color : 'bg-gray-200 dark:bg-white/10 text-gray-400'}`}>
+                            {ach.icon}
+                            </div>
+                            <div>
+                            <h4 className="font-bold text-sm text-gray-900 dark:text-white">{ach.title}</h4>
+                            <p className="text-xs text-gray-500">{ach.desc}</p>
+                            </div>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-sm text-gray-900 dark:text-white">{ach.title}</h4>
-                           <p className="text-xs text-gray-500">{ach.desc}</p>
-                        </div>
-                     </div>
-                  ))}
+                     );
+                  })}
                </div>
             </div>
          </div>

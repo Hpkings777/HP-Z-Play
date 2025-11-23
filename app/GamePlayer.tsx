@@ -9,7 +9,7 @@ import { loadGame } from '../core/loader';
 const GamePlayer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addRecent, addXp } = useThemeStore();
+  const { addRecent, addXp, incrementTimePlayed } = useThemeStore();
   const game = GAMES.find(g => g.id === id);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -23,11 +23,12 @@ const GamePlayer = () => {
       // Simulate game session XP gain
       const xpInterval = setInterval(() => {
         addXp(5);
+        incrementTimePlayed(10);
       }, 10000); // 5 XP every 10 seconds of "play"
 
       return () => clearInterval(xpInterval);
     }
-  }, [id, addRecent, addXp]);
+  }, [id, addRecent, addXp, incrementTimePlayed]);
 
   useEffect(() => {
     // Extended Loading Simulation (4-6 seconds)
