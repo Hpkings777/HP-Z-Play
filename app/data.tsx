@@ -23,8 +23,18 @@ const iconMap: Record<string, React.ReactNode> = {
   'snowflake': <Snowflake size={20} />,
   'ghost': <Ghost size={20} />,
   'dino': <Gamepad2 size={20} />,
-  'Hexagon': <Hexagon size={20} />,
-  'Zap': <Zap size={20} />
+  'hexagon': <Hexagon size={20} />,
+  'zap': <Zap size={20} />,
+  'gamepad2': <Gamepad2 size={20} />
 };
 
-
+export const GAMES: Game[] = getAllGames().map(game => ({
+  id: game.id,
+  title: game.name,
+  category: game.category,
+  description: game.description,
+  color: game.color,
+  icon: iconMap[game.icon.toLowerCase()] || <Gamepad2 size={20} />,
+  rating: game.rating,
+  players: game.players
+}));

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GameCard from './GameCard';
 import { Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getAllGames } from '@core/loader';
-import { Game } from './data';
+import { GAMES } from './data';
 
 const container = {
   hidden: { opacity: 0 },
@@ -21,14 +20,6 @@ const item = {
 };
 
 const Home = () => {
-  const [games, setGames] = useState<Game[]>([]);
-
-  useEffect(() => {
-    const allGames = getAllGames();
-    // The type assertion is needed because the loader returns a generic object
-    setGames(allGames as unknown as Game[]);
-  }, []);
-
   return (
     <div className="p-4 md:p-8 lg:p-12 max-w-7xl mx-auto pb-24 md:pb-8 min-h-screen">
       <header className="mb-8 md:mb-12">
@@ -53,7 +44,7 @@ const Home = () => {
           animate="show"
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
-          {games.map((game) => (
+          {GAMES.map((game) => (
             <motion.div key={game.id} variants={item}>
               <GameCard {...game} />
             </motion.div>
