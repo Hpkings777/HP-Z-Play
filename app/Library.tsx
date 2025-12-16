@@ -5,7 +5,8 @@ import GameCard from './GameCard';
 import { Heart, History, Ghost, AlertTriangle } from 'lucide-react';
 
 const Library = () => {
-  const { favorites, recent } = useThemeStore();
+  const favorites = useThemeStore(state => state.favorites);
+  const recent = useThemeStore(state => state.recent);
 
   const allGames = getAllGames();
   const favoriteGames = allGames.filter(g => favorites.includes(g.id));
