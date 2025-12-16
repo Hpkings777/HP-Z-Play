@@ -80,7 +80,9 @@ const GamePlayer = () => {
       <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-20 pointer-events-none">
         <button
           onClick={() => navigate(-1)}
-          className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10"
+          aria-label="Go back"
+          title="Go back"
+          className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none"
         >
           <ArrowLeft size={20} />
         </button>
@@ -88,7 +90,11 @@ const GamePlayer = () => {
              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
              <span className="text-xs font-mono text-white/80 uppercase tracking-widest">Live Session</span>
         </div>
-        <button className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10">
+        <button
+          aria-label="Toggle fullscreen"
+          title="Toggle fullscreen"
+          className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none"
+        >
           <Maximize2 size={20} />
         </button>
       </div>
