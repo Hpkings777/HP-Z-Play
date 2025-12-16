@@ -21,10 +21,9 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
 };
 
 const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
+  const isFav = useThemeStore(state => state.favorites.includes(id));
+  const toggleFavorite = useThemeStore(state => state.toggleFavorite);
   const navigate = useNavigate();
-
-  const isFav = favorites.includes(id);
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();

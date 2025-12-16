@@ -1,0 +1,3 @@
+## 2024-05-23 - Zustand Re-render Optimization
+**Learning:** Using `useStore()` without a selector subscribes the component to the entire store state. In a list component like `GameCard`, this causes *every* card to re-render when *any* global state changes (like XP, Theme, or even toggling a favorite on a different card), leading to massive unnecessary re-renders.
+**Action:** Always use specific selectors for Zustand hooks (e.g., `useStore(s => s.specificValue)`) to ensure components only re-render when their dependencies actually change. For arrays/objects, consider returning a primitive (boolean) or using `shallow`.
