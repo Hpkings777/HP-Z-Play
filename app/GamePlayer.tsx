@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Maximize2, AlertTriangle, Terminal } from 'lucide-react';
+import { ArrowLeft, Maximize2, Minimize2, AlertTriangle, Terminal } from 'lucide-react';
 import { GAMES } from './data';
 import { useThemeStore } from './store';
 import { loadGame } from '../core/loader';
@@ -15,6 +15,27 @@ const GamePlayer = () => {
   const [progress, setProgress] = useState(0);
   const [loadingStage, setLoadingStage] = useState('INITIALIZING');
   const [iframeSrc, setIframeSrc] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((e) => {
+        console.error(`Error attempting to enable fullscreen mode: ${e.message} (${e.name})`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   useEffect(() => {
     if (id) {
@@ -81,6 +102,8 @@ const GamePlayer = () => {
         <button
           onClick={() => navigate(-1)}
           className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10"
+          aria-label="Go Back"
+          title="Go Back"
         >
           <ArrowLeft size={20} />
         </button>
@@ -88,8 +111,13 @@ const GamePlayer = () => {
              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
              <span className="text-xs font-mono text-white/80 uppercase tracking-widest">Live Session</span>
         </div>
-        <button className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10">
-          <Maximize2 size={20} />
+        <button
+          onClick={toggleFullscreen}
+          className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10"
+          aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+          title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+        >
+          {isFullscreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
         </button>
       </div>
 
