@@ -13,6 +13,9 @@ const Toggle = ({ label, icon: Icon, value, onChange }: any) => (
     </div>
     <button
       onClick={() => onChange(!value)}
+      role="switch"
+      aria-checked={value}
+      aria-label={label}
       className={`w-12 h-7 rounded-full relative transition-colors duration-300 ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
     >
       <motion.div
