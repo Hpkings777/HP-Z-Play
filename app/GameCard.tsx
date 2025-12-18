@@ -21,10 +21,11 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
 };
 
 const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
-  const navigate = useNavigate();
+  // OPTIMIZATION: Use selectors to prevent re-renders when other store parts (xp, stats) change
+  const toggleFavorite = useThemeStore((state) => state.toggleFavorite);
+  const isFav = useThemeStore((state) => state.favorites.includes(id));
 
-  const isFav = favorites.includes(id);
+  const navigate = useNavigate();
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
