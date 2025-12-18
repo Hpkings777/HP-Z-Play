@@ -1,0 +1,3 @@
+## 2024-05-24 - Zustand Selector Optimization
+**Learning:** Using `useStore()` without a selector subscribes the component to the *entire* state object. In a store with frequently changing data (like stats, timers, or xp), this causes massive unnecessary re-renders for components that only need static or infrequent data (like `GameCard`).
+**Action:** Always use specific selectors `useStore(state => state.value)` to ensure components only re-render when their specific dependency changes. For derived booleans (like `includes`), this is even more powerful as it prevents re-renders even if the source array changes, provided the boolean result remains stable.
