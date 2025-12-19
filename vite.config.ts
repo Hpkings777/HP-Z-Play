@@ -9,8 +9,8 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         host: '0.0.0.0',
         fs: {
-            // Allow serving files from one level up to the project root
-            allow: ['..']
+            // Restrict file serving to the project root for security
+            allow: ['.']
         }
       },
       plugins: [react()],
