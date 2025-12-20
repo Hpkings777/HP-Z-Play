@@ -1,0 +1,3 @@
+## 2024-05-23 - Zustand Granular Selectors & React.memo
+**Learning:** Zustand's `useStore()` hook subscribes to the *entire* state by default. In components rendered in a list (like `GameCard`), this causes *all* items to re-render whenever *any* unrelated state changes (e.g., XP, stats).
+**Action:** Always use granular selectors (e.g., `useStore(s => s.value)`) for components that don't need the full state. For derived data (like `includes`), compute it inside the selector to leverage strict equality checks: `useStore(useCallback(s => s.list.includes(id), [id]))`. Also, wrap list items in `React.memo`. Explicitly type `state` in `useCallback` when using Zustand with `create<Type>()` to avoid TS inference issues.
