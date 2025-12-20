@@ -1,0 +1,3 @@
+## 2025-05-18 - Accessibility of Custom Toggles
+**Learning:** Custom switch components built with `<div>` and `<button>` often lack semantic meaning. Using a `button` for a switch requires explicit `role="switch"`, `aria-checked`, and `aria-label` (or `aria-labelledby`) to be accessible. A plain button just announces "button" without indicating its state (on/off) or purpose to screen readers.
+**Action:** When creating custom toggles, always wrap the interactive element in `role="switch"`, dynamically update `aria-checked`, and ensure there is a clear text label associated via `aria-label`. Add `focus-visible` styles to ensure keyboard users can see where they are.
