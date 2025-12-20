@@ -12,8 +12,11 @@ const Toggle = ({ label, icon: Icon, value, onChange }: any) => (
       <span className="font-medium text-gray-900 dark:text-gray-100">{label}</span>
     </div>
     <button
+      role="switch"
+      aria-checked={value}
+      aria-label={label}
       onClick={() => onChange(!value)}
-      className={`w-12 h-7 rounded-full relative transition-colors duration-300 ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
+      className={`w-12 h-7 rounded-full relative transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
     >
       <motion.div
         initial={false}
@@ -48,7 +51,7 @@ const Settings = () => {
                 </div>
                 <button
                    onClick={toggleTheme}
-                   className="px-4 py-2 rounded-xl bg-gray-200 dark:bg-white/10 text-sm font-bold hover:bg-gray-300 dark:hover:bg-white/20 transition-colors"
+                   className="px-4 py-2 rounded-xl bg-gray-200 dark:bg-white/10 text-sm font-bold hover:bg-gray-300 dark:hover:bg-white/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
                 >
                   {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}
                 </button>
