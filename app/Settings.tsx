@@ -12,6 +12,9 @@ const Toggle = ({ label, icon: Icon, value, onChange }: any) => (
       <span className="font-medium text-gray-900 dark:text-gray-100">{label}</span>
     </div>
     <button
+      role="switch"
+      aria-checked={value}
+      aria-label={label}
       onClick={() => onChange(!value)}
       className={`w-12 h-7 rounded-full relative transition-colors duration-300 ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
     >

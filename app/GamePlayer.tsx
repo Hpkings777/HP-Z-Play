@@ -69,7 +69,13 @@ const GamePlayer = () => {
        <div className="text-center">
          <AlertTriangle size={48} className="mx-auto mb-4 text-red-500" />
          <h2 className="text-xl font-bold">Game Not Found</h2>
-         <button onClick={() => navigate('/')} className="mt-4 px-6 py-2 bg-white text-black rounded-full font-bold">Return Home</button>
+         <button
+           onClick={() => navigate('/')}
+           className="mt-4 px-6 py-2 bg-white text-black rounded-full font-bold"
+           aria-label="Return to Home"
+         >
+           Return Home
+         </button>
        </div>
     </div>
   );
@@ -81,6 +87,8 @@ const GamePlayer = () => {
         <button
           onClick={() => navigate(-1)}
           className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10"
+          aria-label="Go back"
+          title="Go back"
         >
           <ArrowLeft size={20} />
         </button>
@@ -88,7 +96,11 @@ const GamePlayer = () => {
              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
              <span className="text-xs font-mono text-white/80 uppercase tracking-widest">Live Session</span>
         </div>
-        <button className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10">
+        <button
+          className="pointer-events-auto p-3 rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-white/20 transition-colors border border-white/10"
+          aria-label="Maximize"
+          title="Maximize"
+        >
           <Maximize2 size={20} />
         </button>
       </div>
