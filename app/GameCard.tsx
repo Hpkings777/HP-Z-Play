@@ -20,11 +20,10 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
   }
 };
 
-const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
+const GameCard = React.memo<GameCardProps>(({ id, title, category, color, icon, description }) => {
+  const isFav = useThemeStore((s) => s.favorites.includes(id));
+  const toggleFavorite = useThemeStore((s) => s.toggleFavorite);
   const navigate = useNavigate();
-
-  const isFav = favorites.includes(id);
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -65,6 +64,7 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
 
            {/* Favorite Button */}
            <motion.button
+             data-testid="fav-btn"
              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
              whileTap={{ scale: 0.8 }}
              onClick={handleFavorite}
@@ -110,6 +110,6 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
       <div className="absolute inset-0 rounded-3xl border-2 border-white/0 group-hover:border-white/20 dark:group-hover:border-white/20 transition-all duration-300 pointer-events-none" />
     </motion.div>
   );
-};
+});
 
 export default GameCard;
