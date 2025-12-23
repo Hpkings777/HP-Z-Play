@@ -1,0 +1,3 @@
+## 2024-05-23 - [Card Focus Interaction Pattern]
+**Learning:** Complex cards with nested actions (like GameCard) should not be made focusable containers themselves if they contain other interactive buttons (Play, Favorite). This creates nested interactive controls which confuses screen readers.
+**Action:** Instead, ensure all internal actions are focusable and use `group-focus-within` on the container to trigger reveal animations (like showing the info box) when a user tabs into any child button. This provides the same visual feedback as hover for keyboard users without breaking semantic HTML.
