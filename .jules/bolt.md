@@ -1,0 +1,3 @@
+## 2025-05-23 - [Zustand Granular Selectors]
+**Learning:** Subscribing to the entire store (or a large slice) using `useStore()` causes re-renders on every state change. For list items like `GameCard` that rely on a single derived value (e.g., `favorites.includes(id)`), use granular selectors: `useStore(state => state.favorites.includes(id))` to leverage strict equality checks and prevent unnecessary re-renders.
+**Action:** Always use granular selectors in components rendered in lists or those that only need a small part of the state.
