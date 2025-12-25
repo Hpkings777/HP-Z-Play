@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { toggleFav, getFavs, getStats, saveStats, getAchievements, saveAchievements, UserStats, Achievement } from '../core/localdb';
 
-interface ThemeState {
+export interface ThemeState {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
 
