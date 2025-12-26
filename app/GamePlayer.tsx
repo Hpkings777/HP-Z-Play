@@ -174,6 +174,8 @@ const GamePlayer = () => {
                 src={iframeSrc}
                 title={game.title}
                 className="w-full h-full border-none"
+                // Security: Sandbox games to prevent top-level nav/popups while allowing gameplay features
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
                 allowFullScreen
               />
             </motion.div>
