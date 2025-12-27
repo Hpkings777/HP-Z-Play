@@ -1,0 +1,4 @@
+## 2025-02-18 - [Iframe Sandbox Missing]
+**Vulnerability:** The game player iframe was loading local game content without a `sandbox` attribute. While the content is currently same-origin and trusted, this violates the principle of least privilege and leaves the application vulnerable if a malicious game file were ever introduced (e.g., via a compromised dependency or PR). It could potentially access the parent window's storage or redirect the top-level window.
+**Learning:** Even when content is hosted on the same domain, `sandbox` provides critical defense-in-depth by restricting capabilities (like top-level navigation) that are not needed for the embedded content.
+**Prevention:** Always apply strict `sandbox` policies to iframes, enabling only the specific permissions required for functionality (e.g., `allow-scripts`, `allow-same-origin` for local storage/assets).
