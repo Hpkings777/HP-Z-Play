@@ -3,26 +3,32 @@ import { useThemeStore } from './store';
 import { Bell, Volume2, Zap, Monitor, Moon, Sun, VolumeX } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Toggle = ({ label, icon: Icon, value, onChange }: any) => (
-  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-white/5 rounded-2xl mb-3">
-    <div className="flex items-center gap-3">
-      <div className="p-2 bg-white dark:bg-white/10 rounded-xl text-gray-600 dark:text-gray-300 shadow-sm">
-        <Icon size={20} />
+const Toggle = ({ label, icon: Icon, value, onChange }: any) => {
+  const id = React.useId();
+  return (
+    <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-white/5 rounded-2xl mb-3">
+      <div className="flex items-center gap-3">
+        <div className="p-2 bg-white dark:bg-white/10 rounded-xl text-gray-600 dark:text-gray-300 shadow-sm">
+          <Icon size={20} />
+        </div>
+        <span id={id} className="font-medium text-gray-900 dark:text-gray-100 cursor-pointer" onClick={() => onChange(!value)}>{label}</span>
       </div>
-      <span className="font-medium text-gray-900 dark:text-gray-100">{label}</span>
+      <button
+        role="switch"
+        aria-checked={value}
+        aria-labelledby={id}
+        onClick={() => onChange(!value)}
+        className={`w-12 h-7 rounded-full relative transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 outline-none ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
+      >
+        <motion.div
+          initial={false}
+          animate={{ x: value ? 20 : 2 }}
+          className="w-5 h-5 bg-white rounded-full shadow-md absolute top-1"
+        />
+      </button>
     </div>
-    <button
-      onClick={() => onChange(!value)}
-      className={`w-12 h-7 rounded-full relative transition-colors duration-300 ${value ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`}
-    >
-      <motion.div
-        initial={false}
-        animate={{ x: value ? 20 : 2 }}
-        className="w-5 h-5 bg-white rounded-full shadow-md absolute top-1"
-      />
-    </button>
-  </div>
-);
+  );
+};
 
 const Settings = () => {
   const { theme, toggleTheme } = useThemeStore();
