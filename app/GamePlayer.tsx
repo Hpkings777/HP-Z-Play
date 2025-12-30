@@ -175,6 +175,13 @@ const GamePlayer = () => {
                 title={game.title}
                 className="w-full h-full border-none"
                 allowFullScreen
+                // Sandbox flags:
+                // allow-scripts: Required for game logic
+                // allow-same-origin: Required for games to access their own LocalStorage (saves)
+                // allow-forms: Required for some game inputs
+                // allow-popups: Required for external links (if any)
+                // allow-pointer-lock: Required for FPS/mouse-capture games
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
               />
             </motion.div>
           )}
