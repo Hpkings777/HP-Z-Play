@@ -170,11 +170,13 @@ const GamePlayer = () => {
               className="w-full h-full bg-gray-900 flex items-center justify-center relative"
             >
               {/* Real Game Iframe */}
+              {/* Security: Sandbox the iframe to prevent malicious access to parent context */}
               <iframe
                 src={iframeSrc}
                 title={game.title}
                 className="w-full h-full border-none"
                 allowFullScreen
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"
               />
             </motion.div>
           )}
