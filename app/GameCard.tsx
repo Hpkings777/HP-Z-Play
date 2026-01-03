@@ -20,11 +20,14 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
   }
 };
 
-const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
-  const navigate = useNavigate();
+const GameCard = React.memo<GameCardProps>(({ id, title, category, color, icon, description }) => {
+  // OPTIMIZATION: Use granular selectors to prevent unnecessary re-renders.
+  // Previously: const { favorites } = useThemeStore() caused re-renders on ANY store change.
+  // Now: Only re-renders if this specific game's favorite status changes.
+  const isFav = useThemeStore((state) => state.favorites.includes(id));
+  const toggleFavorite = useThemeStore((state) => state.toggleFavorite);
 
-  const isFav = favorites.includes(id);
+  const navigate = useNavigate();
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -110,6 +113,6 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
       <div className="absolute inset-0 rounded-3xl border-2 border-white/0 group-hover:border-white/20 dark:group-hover:border-white/20 transition-all duration-300 pointer-events-none" />
     </motion.div>
   );
-};
+});
 
 export default GameCard;
