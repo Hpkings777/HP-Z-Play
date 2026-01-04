@@ -174,6 +174,7 @@ const GamePlayer = () => {
                 src={iframeSrc}
                 title={game.title}
                 className="w-full h-full border-none"
+                sandbox="allow-scripts allow-forms allow-popups allow-pointer-lock"
                 allowFullScreen
               />
             </motion.div>
