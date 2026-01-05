@@ -1,0 +1,4 @@
+## 2024-05-24 - [Missing Iframe Sandbox]
+**Vulnerability:** The game player component (`app/GamePlayer.tsx`) embedded games via an `iframe` without a `sandbox` attribute. This allowed embedded content full access to the browser window, posing a risk of XSS or malicious redirects if the game content were compromised or if the game path was manipulated.
+**Learning:** Even internal content should be sandboxed to practice defense-in-depth. Assumptions that "all games are trusted" can break if a game is compromised or if user-uploaded content is added later.
+**Prevention:** Always apply `sandbox` attributes to `iframe` elements, granting only the minimum required permissions (e.g., `allow-scripts`, `allow-forms`). Explicitly omit `allow-same-origin` unless strictly necessary to isolate the iframe from the parent's origin data (localStorage, cookies).
