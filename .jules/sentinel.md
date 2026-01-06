@@ -1,0 +1,4 @@
+## 2024-05-23 - [Missing Iframe Sandboxing for Local Games]
+**Vulnerability:** Locally hosted games in `games/` were loaded in an `iframe` without the `sandbox` attribute. Because they are served from the same origin as the application, they had full access to the application's `localStorage`, cookies, and other origin-bound resources.
+**Learning:** Developers may mistakenly assume that "internal" or locally hosted content is inherently trusted and does not require isolation. However, if that content is essentially a separate application (like a game) and doesn't need shared state, it should be isolated to follow the Principle of Least Privilege.
+**Prevention:** Always apply `sandbox` attributes to `iframe` elements, especially when embedding third-party-style content, even if it is hosted on the same origin. Explicitly grant only the necessary permissions.
