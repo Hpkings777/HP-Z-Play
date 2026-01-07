@@ -65,6 +65,9 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
 
            {/* Favorite Button */}
            <motion.button
+             aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+             aria-pressed={isFav}
+             title={isFav ? "Remove from favorites" : "Add to favorites"}
              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
              whileTap={{ scale: 0.8 }}
              onClick={handleFavorite}
@@ -96,6 +99,7 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePlay}
+              aria-label={`Play ${title}`}
               className="w-full py-2.5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-blue-500/10 dark:shadow-white/10"
             >
               <Play size={14} fill="currentColor" />
