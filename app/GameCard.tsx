@@ -68,7 +68,10 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
              whileTap={{ scale: 0.8 }}
              onClick={handleFavorite}
-             className={`p-2.5 rounded-full backdrop-blur-md shadow-sm ring-1 ring-white/10 transition-all duration-300 ${
+             aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+             aria-pressed={isFav}
+             title={isFav ? "Remove from favorites" : "Add to favorites"}
+             className={`p-2.5 rounded-full backdrop-blur-md shadow-sm ring-1 ring-white/10 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none ${
                isFav
                  ? 'bg-yellow-400/20 text-yellow-300 ring-yellow-400/50'
                  : 'bg-black/20 text-white/70 hover:text-white'
@@ -96,7 +99,8 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePlay}
-              className="w-full py-2.5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-blue-500/10 dark:shadow-white/10"
+              aria-label={`Play ${title}`}
+              className="w-full py-2.5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-blue-500/10 dark:shadow-white/10 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none"
             >
               <Play size={14} fill="currentColor" />
               <span className="tracking-wide">PLAY</span>
