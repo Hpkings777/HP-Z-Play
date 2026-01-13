@@ -79,7 +79,11 @@ const Layout = () => {
            <span className="font-bold text-lg tracking-tight">HP Z-Play</span>
         </div>
         <div className="flex items-center gap-3">
-            <button className="p-2 text-gray-500 dark:text-gray-400">
+            <button
+              className="p-2 text-gray-500 dark:text-gray-400"
+              aria-label="View notifications"
+              title="View notifications"
+            >
                 <Bell size={20} />
             </button>
             <ThemeToggle />
