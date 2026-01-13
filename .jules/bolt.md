@@ -1,0 +1,3 @@
+## 2026-01-13 - [Prevent Global Store Subscriptions in List Items]
+**Learning:** Subscribing to the entire Zustand store (e.g., `const { ... } = useStore()`) in a list component (like `GameCard`) causes *all* items to re-render whenever *any* part of the store changes, even if unrelated (like theme toggle). This caused ~440 re-renders for a simple theme switch.
+**Action:** Always use granular selectors (e.g., `useStore(s => s.specificData)`) in frequently rendered components. For parameterized selectors (e.g., depending on `props.id`), wrap the selector in `useCallback` or ensure it returns a primitive value to leverage strict equality checks.
