@@ -1,0 +1,3 @@
+## 2026-01-15 - [Zustand Granular Selectors]
+**Learning:** Subscribing to the entire Zustand store (e.g., `const { theme } = useThemeStore()`) in high-level components like `Layout` causes cascading re-renders of the entire application on *any* state change (e.g., toggling a favorite). Even memoized children (`GameCard`) may re-render if the parent (`Home`) is forced to update via `Outlet` context changes or similar mechanisms triggered by the root re-render.
+**Action:** Always use granular selectors (e.g., `useThemeStore(s => s.theme)`) or `useShallow` for object slices. Audit `Layout` and other root-level components first when debugging performance, as their re-renders negate optimizations in leaf components.

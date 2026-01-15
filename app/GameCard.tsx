@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star } from 'lucide-react';
+import { useShallow } from 'zustand/react/shallow';
 import { useThemeStore } from './store';
 import { useNavigate } from 'react-router-dom';
 import { Game } from './data';
@@ -20,11 +21,10 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
   }
 };
 
-const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
+const GameCard = React.memo(({ id, title, category, color, icon, description }: GameCardProps) => {
+  const isFav = useThemeStore(useShallow((state) => state.favorites.includes(id)));
+  const toggleFavorite = useThemeStore((state) => state.toggleFavorite);
   const navigate = useNavigate();
-
-  const isFav = favorites.includes(id);
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -110,6 +110,8 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
       <div className="absolute inset-0 rounded-3xl border-2 border-white/0 group-hover:border-white/20 dark:group-hover:border-white/20 transition-all duration-300 pointer-events-none" />
     </motion.div>
   );
-};
+});
+
+GameCard.displayName = 'GameCard';
 
 export default GameCard;
