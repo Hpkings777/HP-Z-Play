@@ -22,7 +22,7 @@ const NavItem = ({ to, icon: Icon, label, mobileOnly = false }: any) => (
 );
 
 const Layout = () => {
-  const { theme } = useThemeStore();
+  const theme = useThemeStore((state) => state.theme);
 
   // Apply theme class to html/body
   React.useEffect(() => {
