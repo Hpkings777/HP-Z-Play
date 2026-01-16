@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, Star } from 'lucide-react';
 import { useThemeStore } from './store';
+import { useShallow } from 'zustand/react/shallow';
 import { useNavigate } from 'react-router-dom';
 import { Game } from './data';
 
@@ -21,10 +22,13 @@ const triggerHaptic = (type: 'light' | 'heavy') => {
 };
 
 const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, description }) => {
-  const { favorites, toggleFavorite } = useThemeStore();
+  const { toggleFavorite, isFav } = useThemeStore(
+    useShallow((state) => ({
+      toggleFavorite: state.toggleFavorite,
+      isFav: state.favorites.includes(id),
+    }))
+  );
   const navigate = useNavigate();
-
-  const isFav = favorites.includes(id);
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -112,4 +116,4 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
   );
 };
 
-export default GameCard;
+export default React.memo(GameCard);
