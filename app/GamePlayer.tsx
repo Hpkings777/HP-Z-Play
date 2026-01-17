@@ -175,6 +175,7 @@ const GamePlayer = () => {
                 title={game.title}
                 className="w-full h-full border-none"
                 allowFullScreen
+                sandbox="allow-scripts allow-forms allow-popups allow-pointer-lock"
               />
             </motion.div>
           )}
