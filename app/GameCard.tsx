@@ -48,10 +48,10 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
       className="group relative overflow-hidden rounded-3xl aspect-[3/4] cursor-pointer isolate shadow-xl ring-1 ring-black/5 dark:ring-white/5 flex flex-col justify-between"
     >
       {/* Dynamic Background Gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-90 transition-opacity duration-500 group-hover:opacity-100`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-90 transition-opacity duration-500 group-hover:opacity-100 group-focus-within:opacity-100`} />
 
       {/* Premium Glass Texture Overlay */}
-      <div className="absolute inset-0 bg-black/10 dark:bg-white/5 backdrop-blur-[1px] group-hover:backdrop-blur-0 transition-all duration-500" />
+      <div className="absolute inset-0 bg-black/10 dark:bg-white/5 backdrop-blur-[1px] group-hover:backdrop-blur-0 group-focus-within:backdrop-blur-0 transition-all duration-500" />
 
       {/* Content Container */}
       <div className="absolute inset-0 p-5 flex flex-col justify-between z-20">
@@ -68,7 +68,9 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
              whileTap={{ scale: 0.8 }}
              onClick={handleFavorite}
-             className={`p-2.5 rounded-full backdrop-blur-md shadow-sm ring-1 ring-white/10 transition-all duration-300 ${
+             aria-label={`Favorite ${title}`}
+             aria-pressed={isFav}
+             className={`p-2.5 rounded-full backdrop-blur-md shadow-sm ring-1 ring-white/10 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white ${
                isFav
                  ? 'bg-yellow-400/20 text-yellow-300 ring-yellow-400/50'
                  : 'bg-black/20 text-white/70 hover:text-white'
@@ -85,7 +87,7 @@ const GameCard: React.FC<GameCardProps> = ({ id, title, category, color, icon, d
         {/* Bottom Section: Info & Play */}
         <div className="space-y-3 relative">
           {/* Card Info Box */}
-          <div className="bg-white/95 dark:bg-[#09090b]/90 backdrop-blur-xl p-4 rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-400 ease-out will-change-transform">
+          <div className="bg-white/95 dark:bg-[#09090b]/90 backdrop-blur-xl p-4 rounded-2xl border border-white/20 dark:border-white/10 shadow-2xl transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-400 ease-out will-change-transform">
 
             <div className="mb-3">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-tight tracking-tight truncate">{title}</h3>
