@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import GameCard from './GameCard';
 import { Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,29 +31,6 @@ const item = {
 };
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading delay to show the loader
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen bg-light-bg dark:bg-dark-bg">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1, rotate: 360 }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-600 rounded-full shadow-lg shadow-blue-500/20"
-        />
-      </div>
-    );
-  }
-
   return (
     <div className="p-4 md:p-8 lg:p-12 max-w-7xl mx-auto pb-24 md:pb-8 min-h-screen">
       <header className="mb-8 md:mb-12">
