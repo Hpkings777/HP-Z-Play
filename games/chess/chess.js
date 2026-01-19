@@ -525,7 +525,8 @@ var chess = (function() {
 			etc.aFncBodies = [null, null, null, null, null, null, null, null, null, null, null, null, null];
 			XHR("meshes/board.json", function() {
 				if (graphicsStatus === 0) { return; }
-				etc.tmp3DBoard = eval("(" + this.responseText + ")");
+				// Security fix: Use JSON.parse instead of eval
+				etc.tmp3DBoard = JSON.parse(this.responseText);
 				runComponents();
 			});
 			XHR("meshes/pawn.jscn", loadCom, 0);
